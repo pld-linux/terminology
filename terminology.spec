@@ -7,7 +7,7 @@ License:	BSD
 Group:		Applications
 Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
 # Source0-md5:	388e398063b67de355eaea45abbf179c
-URL:		http://trac.enlightenment.org/e/wiki/Ethumb
+URL:		http://enlightenment.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1.6
 BuildRequires:	ecore-devel >= 1.7.0
