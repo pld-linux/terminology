@@ -1,48 +1,51 @@
+%define		efl_ver		1.7.0
+
 Summary:	Terminology - EFL terminal emulator
 Summary(pl.UTF-8):	Terminology - emulator terminala oparty na EFL
 Name:		terminology
-Version:	0.3.0
+Version:	0.4.0
 Release:	1
 License:	BSD
 Group:		Applications
-Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
-# Source0-md5:	461d716a45d0316651d6b5196d2f9509
+Source0:	http://download.enlightenment.org/rel/apps/terminology/%{name}-%{version}.tar.bz2
+# Source0-md5:	43bf2164c6849580db2a461ae5fac57a
 URL:		http://enlightenment.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1.6
-BuildRequires:	ecore-devel >= 1.7.0
-BuildRequires:	ecore-evas-devel >= 1.7.0
-BuildRequires:	ecore-file-devel >= 1.7.0
-BuildRequires:	ecore-imf-devel >= 1.7.0
-BuildRequires:	ecore-imf-evas-devel >= 1.7.0
-BuildRequires:	ecore-input-devel >= 1.7.0
-BuildRequires:	ecore-ipc-devel >= 1.7.0
-BuildRequires:	edje >= 1.7.0
-BuildRequires:	edje-devel >= 1.7.0
-BuildRequires:	eet-devel >= 1.7.0
-BuildRequires:	efreet-devel >= 1.7.0
-BuildRequires:	eina-devel >= 1.7.0
-BuildRequires:	elementary-devel >= 1.7.0
-BuildRequires:	emotion-devel >= 1.7.0
-BuildRequires:	ethumb-devel >= 1.7.0
-BuildRequires:	evas-devel >= 1.7.0
+BuildRequires:	ecore-devel >= %{efl_ver}
+BuildRequires:	ecore-evas-devel >= %{efl_ver}
+BuildRequires:	ecore-file-devel >= %{efl_ver}
+BuildRequires:	ecore-imf-devel >= %{efl_ver}
+BuildRequires:	ecore-imf-evas-devel >= %{efl_ver}
+BuildRequires:	ecore-input-devel >= %{efl_ver}
+BuildRequires:	ecore-ipc-devel >= %{efl_ver}
+BuildRequires:	edje >= %{efl_ver}
+BuildRequires:	edje-devel >= %{efl_ver}
+BuildRequires:	eet-devel >= %{efl_ver}
+BuildRequires:	efreet-devel >= %{efl_ver}
+BuildRequires:	eina-devel >= %{efl_ver}
+BuildRequires:	eldbus-devel
+BuildRequires:	elementary-devel >= %{efl_ver}
+BuildRequires:	emotion-devel >= %{efl_ver}
+BuildRequires:	ethumb-devel >= %{efl_ver}
+BuildRequires:	evas-devel >= %{efl_ver}
 BuildRequires:	pkgconfig
 BuildRequires:	sed >= 4.0
-Requires:	ecore >= 1.7.0
-Requires:	ecore-evas >= 1.7.0
-Requires:	ecore-file >= 1.7.0
-Requires:	ecore-imf >= 1.7.0
-Requires:	ecore-imf-evas >= 1.7.0
-Requires:	ecore-input >= 1.7.0
-Requires:	ecore-ipc >= 1.7.0
-Requires:	edje-libs >= 1.7.0
-Requires:	eet >= 1.7.0
-Requires:	efreet >= 1.7.0
-Requires:	eina >= 1.7.0
-Requires:	elementary >= 1.7.0
-Requires:	emotion >= 1.7.0
-Requires:	ethumb >= 1.7.0
-Requires:	evas >= 1.7.0
+Requires:	ecore >= %{efl_ver}
+Requires:	ecore-evas >= %{efl_ver}
+Requires:	ecore-file >= %{efl_ver}
+Requires:	ecore-imf >= %{efl_ver}
+Requires:	ecore-imf-evas >= %{efl_ver}
+Requires:	ecore-input >= %{efl_ver}
+Requires:	ecore-ipc >= %{efl_ver}
+Requires:	edje-libs >= %{efl_ver}
+Requires:	eet >= %{efl_ver}
+Requires:	efreet >= %{efl_ver}
+Requires:	eina >= %{efl_ver}
+Requires:	elementary >= %{efl_ver}
+Requires:	emotion >= %{efl_ver}
+Requires:	ethumb >= %{efl_ver}
+Requires:	evas >= %{efl_ver}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -96,3 +99,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminology
 %{_desktopdir}/terminology.desktop
 %{_pixmapsdir}/terminology.png
+%{_mandir}/man1/terminology.1*
