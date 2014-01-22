@@ -72,6 +72,7 @@ jest nieco przedwczesne, ale - jak na swój młody wiek - potrafi dużo.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
+export CFLAGS="%{rpmcflags} $(pkg-config --cflags eldbus)"
 %configure \
 	--disable-silent-rules
 
