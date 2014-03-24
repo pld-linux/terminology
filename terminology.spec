@@ -3,12 +3,12 @@
 Summary:	Terminology - EFL terminal emulator
 Summary(pl.UTF-8):	Terminology - emulator terminala oparty na EFL
 Name:		terminology
-Version:	0.4.0
+Version:	0.5.0
 Release:	1
 License:	BSD
 Group:		Applications
 Source0:	http://download.enlightenment.org/rel/apps/terminology/%{name}-%{version}.tar.bz2
-# Source0-md5:	43bf2164c6849580db2a461ae5fac57a
+# Source0-md5:	ef1225c161c85dd1ec38f2b713d6b624
 URL:		http://enlightenment.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1.6
@@ -89,7 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS COPYING README TODO
+%doc AUTHORS COPYING ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/terminology
 %attr(755,root,root) %{_bindir}/tyalpha
 %attr(755,root,root) %{_bindir}/tybg
