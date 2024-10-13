@@ -1,53 +1,21 @@
-%define		efl_ver		1.7.0
-
 Summary:	Terminology - EFL terminal emulator
 Summary(pl.UTF-8):	Terminology - emulator terminala oparty na EFL
 Name:		terminology
-Version:	0.6.1
-Release:	1
+Version:	1.13.0
+Release:	0.1
 License:	BSD
 Group:		Applications
-Source0:	http://download.enlightenment.org/rel/apps/terminology/%{name}-%{version}.tar.xz
-# Source0-md5:	fb2d5ce533b18c4aeb88687d47cfb17e
+Source0:	https://download.enlightenment.org/rel/apps/terminology/%{name}-%{version}.tar.xz
+# Source0-md5:	81e24535c1cf0ac9a506c711c9d621f7
 URL:		http://enlightenment.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1.6
-BuildRequires:	ecore-devel >= %{efl_ver}
-BuildRequires:	ecore-evas-devel >= %{efl_ver}
-BuildRequires:	ecore-file-devel >= %{efl_ver}
-BuildRequires:	ecore-imf-devel >= %{efl_ver}
-BuildRequires:	ecore-imf-evas-devel >= %{efl_ver}
-BuildRequires:	ecore-input-devel >= %{efl_ver}
-BuildRequires:	ecore-ipc-devel >= %{efl_ver}
-BuildRequires:	edje >= %{efl_ver}
-BuildRequires:	edje-devel >= %{efl_ver}
-BuildRequires:	eet-devel >= %{efl_ver}
-BuildRequires:	efreet-devel >= %{efl_ver}
-BuildRequires:	eina-devel >= %{efl_ver}
-BuildRequires:	eldbus-devel
-BuildRequires:	elementary-devel >= %{efl_ver}
-BuildRequires:	emotion-devel >= %{efl_ver}
-BuildRequires:	ethumb-devel >= %{efl_ver}
-BuildRequires:	evas-devel >= %{efl_ver}
+BuildRequires:	efl-devel >= 1.27.0
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.726
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	ecore >= %{efl_ver}
-Requires:	ecore-evas >= %{efl_ver}
-Requires:	ecore-file >= %{efl_ver}
-Requires:	ecore-imf >= %{efl_ver}
-Requires:	ecore-imf-evas >= %{efl_ver}
-Requires:	ecore-input >= %{efl_ver}
-Requires:	ecore-ipc >= %{efl_ver}
-Requires:	edje-libs >= %{efl_ver}
-Requires:	eet >= %{efl_ver}
-Requires:	efreet >= %{efl_ver}
-Requires:	eina >= %{efl_ver}
-Requires:	elementary >= %{efl_ver}
-Requires:	emotion >= %{efl_ver}
-Requires:	ethumb >= %{efl_ver}
-Requires:	evas >= %{efl_ver}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -66,32 +34,25 @@ jest nieco przedwczesne, ale - jak na swój młody wiek - potrafi dużo.
 %prep
 %setup -q
 
-# non-themable images go to pixmaps dir
-%{__sed} -i -e 's,$(datadir)/icons$,$(datadir)/pixmaps,' data/icons/Makefile.am
-
 %build
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-export CFLAGS="%{rpmcflags} $(pkg-config --cflags eldbus)"
-%configure \
-	--disable-silent-rules
+%meson build
 
-%{__make}
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+%ninja_install -C build
+
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS COPYING ChangeLog NEWS README TODO
+%doc AUTHORS COPYING ChangeLog NEWS README.md TODO
+%doc COLORSCHEMES.md THEMES.md
 %attr(755,root,root) %{_bindir}/terminology
 %attr(755,root,root) %{_bindir}/tyalpha
 %attr(755,root,root) %{_bindir}/tybg
@@ -99,7 +60,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/tyls
 %attr(755,root,root) %{_bindir}/typop
 %attr(755,root,root) %{_bindir}/tyq
+%attr(755,root,root) %{_bindir}/tysend
 %{_datadir}/terminology
 %{_desktopdir}/terminology.desktop
-%{_pixmapsdir}/terminology.png
+%{_iconsdir}/hicolor/128x128/apps/terminology.png
 %{_mandir}/man1/terminology.1*
+%{_mandir}/man1/terminology-helpers.1*
+%{_mandir}/man1/tyalpha.1*
+%{_mandir}/man1/tybg.1*
+%{_mandir}/man1/tycat.1*
+%{_mandir}/man1/tyls.1*
+%{_mandir}/man1/typop.1*
+%{_mandir}/man1/tyq.1*
+%{_mandir}/man1/tysend.1*
