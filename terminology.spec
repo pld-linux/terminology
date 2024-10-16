@@ -2,7 +2,7 @@ Summary:	Terminology - EFL terminal emulator
 Summary(pl.UTF-8):	Terminology - emulator terminala oparty na EFL
 Name:		terminology
 Version:	1.13.0
-Release:	1
+Release:	2
 License:	BSD
 Group:		Applications
 Source0:	https://download.enlightenment.org/rel/apps/terminology/%{name}-%{version}.tar.xz
@@ -39,6 +39,9 @@ jest nieco przedwczesne, ale - jak na swój młody wiek - potrafi dużo.
 rm -rf $RPM_BUILD_ROOT
 
 %ninja_install -C build
+
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/nb{_NO,}
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/zh_{Hans,CN}
 
 %find_lang %{name}
 
