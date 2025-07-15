@@ -31,14 +31,14 @@ jest nieco przedwczesne, ale - jak na swój młody wiek - potrafi dużo.
 %setup -q
 
 %build
-%meson build
+%meson
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/nb{_NO,}
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/zh_{Hans,CN}
