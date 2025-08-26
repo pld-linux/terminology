@@ -10,7 +10,7 @@ Source0:	https://download.enlightenment.org/rel/apps/terminology/%{name}-%{versi
 URL:		http://enlightenment.org/
 BuildRequires:	efl-devel >= 1.27.0
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.726
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
